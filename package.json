@@ -1,0 +1,112 @@
+{
+  "name": "code-mobile",
+  "displayName": "Code Mobile — Mobile Mode for VS Code",
+  "description": "Optimizes VS Code layout for mobile: hides status bar & activity bar, adds quick-access toolbar for Terminal and Diffs",
+  "version": "0.1.0",
+  "publisher": "rroy",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codeMobile.enableMobileMode",
+        "title": "Enable Mobile Mode",
+        "category": "Code Mobile",
+        "icon": "$(device-mobile)"
+      },
+      {
+        "command": "codeMobile.disableMobileMode",
+        "title": "Disable Mobile Mode",
+        "category": "Code Mobile",
+        "icon": "$(device-desktop)"
+      },
+      {
+        "command": "codeMobile.toggleTerminal",
+        "title": "Toggle Terminal",
+        "category": "Code Mobile",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "codeMobile.openDiffs",
+        "title": "Open Source Control (Diffs)",
+        "category": "Code Mobile",
+        "icon": "$(git-compare)"
+      },
+      {
+        "command": "codeMobile.toggleSidebar",
+        "title": "Toggle Sidebar",
+        "category": "Code Mobile",
+        "icon": "$(layout-sidebar-left)"
+      },
+      {
+        "command": "codeMobile.openClaude",
+        "title": "Focus Claude Code",
+        "category": "Code Mobile",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "codeMobile.openCopilot",
+        "title": "Focus Copilot Chat",
+        "category": "Code Mobile",
+        "icon": "$(copilot)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "codeMobile.toggleTerminal",
+          "group": "navigation@1",
+          "when": "codeMobile.mobileMode"
+        },
+        {
+          "command": "codeMobile.openDiffs",
+          "group": "navigation@2",
+          "when": "codeMobile.mobileMode"
+        },
+        {
+          "command": "codeMobile.toggleSidebar",
+          "group": "navigation@3",
+          "when": "codeMobile.mobileMode"
+        }
+      ],
+      "commandPalette": [
+        { "command": "codeMobile.enableMobileMode" },
+        { "command": "codeMobile.disableMobileMode" },
+        { "command": "codeMobile.toggleTerminal" },
+        { "command": "codeMobile.openDiffs" },
+        { "command": "codeMobile.toggleSidebar" },
+        { "command": "codeMobile.openClaude" },
+        { "command": "codeMobile.openCopilot" }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "codeMobile.toggleTerminal",
+        "key": "ctrl+shift+t",
+        "when": "codeMobile.mobileMode"
+      },
+      {
+        "command": "codeMobile.openDiffs",
+        "key": "ctrl+shift+d",
+        "when": "codeMobile.mobileMode"
+      },
+      {
+        "command": "codeMobile.toggleSidebar",
+        "key": "ctrl+shift+b",
+        "when": "codeMobile.mobileMode"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node esbuild.config.js",
+    "watch": "node esbuild.config.js --watch",
+    "package": "npx -y @vscode/vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.7.0"
+  }
+}
