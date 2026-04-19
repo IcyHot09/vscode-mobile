@@ -1,4 +1,4 @@
-# Code Mobile
+# VS Code Mobile
 
 A lightweight VS Code extension that makes the editor usable on phones.
 

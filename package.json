@@ -1,6 +1,6 @@
 {
-  "name": "code-mobile",
-  "displayName": "Code Mobile — Mobile Mode for VS Code",
+  "name": "vscode-mobile",
+  "displayName": "VS Code Mobile — Mobile Mode for VS Code",
   "description": "Optimizes VS Code layout for mobile: hides status bar & activity bar, adds quick-access toolbar for Terminal and Diffs",
   "version": "0.1.0",
   "publisher": "rroy",
